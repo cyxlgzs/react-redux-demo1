@@ -19,6 +19,7 @@
 ### 6. push code to github
     git remote add origin https://github.com/cyxlgzs/react-redux-demo1.git
     git add .
+    git rm .idea/workspace.xml --cache
     git commit -m 'init project'
     git push --set-upstream origin master
     git push
