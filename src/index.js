@@ -5,13 +5,17 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import todoReducers from './reducers/index';
 
 import {BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 
-let store = createStore(todoReducers);
+import logger from 'redux-logger';
+
+let store = createStore(todoReducers, applyMiddleware(thunk, logger));
 
 const home = () => (<ul className="list-group">
     <li className="list-group-item"><NavLink to="/todo_list" activeStyle={{color:'green'}}>Todo List</NavLink></li>

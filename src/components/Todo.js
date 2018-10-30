@@ -2,7 +2,9 @@ import React from 'react';
 
 const Todo = ({id, text, completed, onClick}) => {
     return (
-        <li style={ {textDecoration:completed?'line-through':'none'} } onClick={onClick}>{text}</li>
+        <li className="list-group-item" style={ {textDecoration:completed?'line-through':'none'} }>
+        <span onClick={onClick}>{text}</span>
+        </li>
     );
 }
 

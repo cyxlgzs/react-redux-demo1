@@ -23,3 +23,12 @@
     git commit -m 'init project'
     git push --set-upstream origin master
     git push
+
+### 7. use redux thunk middleware
+    npm install redux-thunk --save
+
+### 8. use redux logger
+    npm install redux-logger --save
+
+### 9. use fetch
+    npm install whatwg-fetch --save

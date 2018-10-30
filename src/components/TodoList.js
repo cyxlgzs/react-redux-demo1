@@ -2,7 +2,7 @@ import React from 'react';
 import Todo from './Todo';
 
 const TodoList = ({todos, onTodoClick}) => {
-    return (<ul>
+    return (<ul className="list-group">
         {
             todos.map(item=> (
                 <Todo

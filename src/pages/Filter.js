@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Filter from '../components/Filter';
-import {filterTodos} from '../actions'
+import {filterTodos, externalActionTest} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onFilterClick:(filter)=>{
             dispatch(filterTodos(filter));
+            if(filter=='SHOW_ALL'){
+                dispatch(externalActionTest('external...'));
+            }
         }
     }
 }
