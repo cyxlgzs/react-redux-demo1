@@ -25,6 +25,14 @@ export const filterTodos = (filter) =>{
     }
 }
 
+export const login = (email) => {
+
+    return {
+        type: "LOGIN",
+        email
+    }
+}
+
 export const externalActionTest = (payload) => {
     return dispatch => {
         myFetch('http://119.84.60.71:3000/api/version')

@@ -5,36 +5,62 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { createStore, applyMiddleware } from 'redux';
-
-import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import todoReducers from './reducers/index';
 
-import {BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import {BrowserRouter as Router, Route, NavLink, Switch, Redirect, withRouter } from "react-router-dom";
 
-import logger from 'redux-logger';
 
-let store = createStore(todoReducers, applyMiddleware(thunk, logger));
+import {setAuth} from './global';
 
-const home = () => (<ul className="list-group">
+
+import PrivateRoute from './PrivateRoute';
+
+import store from './store';
+
+import Login from './pages/LoginPage';
+
+
+
+const requireAuth = (nextState, replace) => {
+    if (true) {
+        replace({ pathname: '/login' }) // 路由转发
+    }else{
+        // ...
+    }
+}
+
+
+const Home = () => (<ul className="list-group">
     <li className="list-group-item"><NavLink to="/todo_list" activeStyle={{color:'green'}}>Todo List</NavLink></li>
     <li className="list-group-item"><NavLink to="/about" activeStyle={{color:'green'}}>About Us</NavLink></li>
-    <li className="list-group-item"><NavLink to="/" activeStyle={{color:'green'}}>Home</NavLink></li>
+    <li className="list-group-item"><NavLink to="/home" activeStyle={{color:'green'}}>Home</NavLink></li>
 </ul>);
 
-const about = () => (<div>
-    About us
-</div>);
+class About extends React.Component{
+    logout(){
+        setAuth(false);
+        this.props.history.push("/home");
+    }
+    render(){
+        return (<div>
+            <input type="button" value="Logout" onClick={()=>{this.logout()}} />
+        </div>);
+    }
+};
+
+
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
             <div>
-                <Route path="/todo_list" component={App} />
-                <Route path="/about" component={about} />
-                <Route path="/" component={home} />
-
+                <Switch>
+                    <Route path="/login" component={Login} />
+                    <Redirect from="/" exact to="login" />
+                    <PrivateRoute path="/home" component={Home}/>
+                    <PrivateRoute path="/todo_list" component={App} />
+                    <PrivateRoute path="/about" component={About} />
+                </Switch>
             </div>
         </Router>
     </Provider>,
