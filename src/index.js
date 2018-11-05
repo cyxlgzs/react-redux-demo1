@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import io from './socket';
 
 import { Provider } from 'react-redux';
 
@@ -29,6 +30,10 @@ const requireAuth = (nextState, replace) => {
     }
 }
 
+//监听新用户登录
+io.on('login', function(o){
+    console.log(o);
+});
 
 const Home = () => (<ul className="list-group">
     <li className="list-group-item"><NavLink to="/todo_list" activeStyle={{color:'green'}}>Todo List</NavLink></li>

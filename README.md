@@ -1,5 +1,6 @@
 This project is an example of studying react, react-redux and react-router.
-It also contains an example of Authentication.
+It also contains an example of Authentication and websocket.
+
 ### 1. create react project
     npm install -g create-react-app
     create-react-app react-redux-demo1
@@ -37,3 +38,6 @@ It also contains an example of Authentication.
 
 ### 10. auth example
     create PrivateRoute component
+
+### 11. use socket.io
+    npm install --save socket.io
