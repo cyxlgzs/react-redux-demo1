@@ -1,5 +1,5 @@
-This project is a example of studying react, react-redux and react-router.
-And also it contains a example of Authentication.
+This project is an example of studying react, react-redux and react-router.
+It also contains an example of Authentication.
 ### 1. create react project
     npm install -g create-react-app
     create-react-app react-redux-demo1
