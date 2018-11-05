@@ -34,6 +34,7 @@ const Home = () => (<ul className="list-group">
     <li className="list-group-item"><NavLink to="/todo_list" activeStyle={{color:'green'}}>Todo List</NavLink></li>
     <li className="list-group-item"><NavLink to="/about" activeStyle={{color:'green'}}>About Us</NavLink></li>
     <li className="list-group-item"><NavLink to="/home" activeStyle={{color:'green'}}>Home</NavLink></li>
+    <li className="list-group-item"><a href="/">Logout</a></li>
 </ul>);
 
 class About extends React.Component{

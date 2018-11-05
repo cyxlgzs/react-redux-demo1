@@ -32,3 +32,6 @@
 
 ### 9. use fetch
     npm install whatwg-fetch --save
+
+### 10. auth example
+    create PrivateRoute component
