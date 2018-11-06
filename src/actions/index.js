@@ -2,6 +2,8 @@ import {fetch as myFetch} from 'whatwg-fetch';
 
 
 let nextTodoId = 0;
+export let nextUserId = 0;
+let nextMsgId = 0;
 
 export const addTodo = (text) => {
     return {
@@ -30,6 +32,35 @@ export const login = (email) => {
     return {
         type: "LOGIN",
         email
+    }
+}
+
+
+export const addChat = (username, socket) => {
+    return {
+        type: "ADD_CHAT",
+        userid: nextUserId++,
+        username,
+        socket
+    }
+}
+
+export const exitChat = (socket, username, userid) => {
+    return {
+        type: "EXIT_CHAT",
+        socket,
+        username,
+        userid
+    }
+}
+
+export const addMsg = (username, msg, userid) => {
+    return {
+        type: "ADD_MSG",
+        nextMsgId: nextMsgId++,
+        msg,
+        username,
+        userid
     }
 }
 

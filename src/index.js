@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import io from './socket';
 
 import { Provider } from 'react-redux';
 
@@ -19,6 +18,7 @@ import PrivateRoute from './PrivateRoute';
 import store from './store';
 
 import Login from './pages/LoginPage';
+import ChatRoom from './pages/ChatRoom';
 
 
 
@@ -30,15 +30,12 @@ const requireAuth = (nextState, replace) => {
     }
 }
 
-//监听新用户登录
-io.on('login', function(o){
-    console.log(o);
-});
 
 const Home = () => (<ul className="list-group">
     <li className="list-group-item"><NavLink to="/todo_list" activeStyle={{color:'green'}}>Todo List</NavLink></li>
     <li className="list-group-item"><NavLink to="/about" activeStyle={{color:'green'}}>About Us</NavLink></li>
     <li className="list-group-item"><NavLink to="/home" activeStyle={{color:'green'}}>Home</NavLink></li>
+    <li className="list-group-item"><NavLink to="/chat_room" activeStyle={{color:'green'}}>Chat Room</NavLink></li>
     <li className="list-group-item"><a href="/">Logout</a></li>
 </ul>);
 
@@ -66,6 +63,7 @@ ReactDOM.render(
                     <PrivateRoute path="/home" component={Home}/>
                     <PrivateRoute path="/todo_list" component={App} />
                     <PrivateRoute path="/about" component={About} />
+                    <PrivateRoute path="/chat_room" component={ChatRoom} />
                 </Switch>
             </div>
         </Router>

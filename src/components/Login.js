@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StatelessLogin = ({onLoginClick}) => {
+const StatelessLogin = ({onLoginClick, chats}) => {
     let emailDom;
 
     return (
